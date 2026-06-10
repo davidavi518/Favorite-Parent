@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Favorite Parent</title>
+<style>
+body{margin:0;height:100vh;overflow:hidden;display:flex;justify-content:center;align-items:center;font-family:Arial,sans-serif;background:linear-gradient(135deg,#87CEEB,#E6F7FF);}
+.card{background:white;padding:40px;border-radius:24px;text-align:center;box-shadow:0 15px 40px rgba(0,0,0,.15);width:400px;position:relative;z-index:2;}
+h1{color:#333;margin-bottom:30px;}
+.buttons{position:relative;height:100px;}
+button{border:none;padding:14px 30px;font-size:18px;font-weight:bold;border-radius:999px;cursor:pointer;transition:all .2s ease;}
+#dadBtn{background:#1e88e5;color:white;position:absolute;left:50%;top:20px;transform:translateX(-50%);}
+#dadBtn:hover{transform:translateX(-50%) scale(1.08);}
+#momBtn{background:#e91e63;color:white;position:fixed;left:60%;top:60%;z-index:10;}
+.result{display:none;margin-top:25px;font-size:24px;font-weight:bold;color:#1e88e5;}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Who is your favorite parent?</h1>
+<div class="buttons">
+<button id="dadBtn">Dad</button>
+</div>
+<div id="result" class="result">Excellent choice 😎</div>
+</div>
+
+<button id="momBtn">Mom</button>
+
+<script>
+const momBtn=document.getElementById("momBtn");
+const dadBtn=document.getElementById("dadBtn");
+const result=document.getElementById("result");
+
+function moveMomButton(){
+ const padding=20;
+ const maxX=window.innerWidth-momBtn.offsetWidth-padding;
+ const maxY=window.innerHeight-momBtn.offsetHeight-padding;
+ momBtn.style.left=(Math.random()*maxX)+"px";
+ momBtn.style.top=(Math.random()*maxY)+"px";
+}
+
+momBtn.addEventListener("mouseenter",moveMomButton);
+momBtn.addEventListener("mouseover",moveMomButton);
+momBtn.addEventListener("pointerenter",moveMomButton);
+momBtn.addEventListener("click",moveMomButton);
+
+dadBtn.addEventListener("click",()=>{
+ result.style.display="block";
+ momBtn.style.display="none";
+});
+</script>
+</body>
+</html>
