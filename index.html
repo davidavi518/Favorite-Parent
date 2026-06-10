@@ -3,51 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Favorite Parent</title>
+<title>Who is your favorite parent?</title>
 <style>
-body{margin:0;height:100vh;overflow:hidden;display:flex;justify-content:center;align-items:center;font-family:Arial,sans-serif;background:linear-gradient(135deg,#87CEEB,#E6F7FF);}
-.card{background:white;padding:40px;border-radius:24px;text-align:center;box-shadow:0 15px 40px rgba(0,0,0,.15);width:400px;position:relative;z-index:2;}
-h1{color:#333;margin-bottom:30px;}
-.buttons{position:relative;height:100px;}
-button{border:none;padding:14px 30px;font-size:18px;font-weight:bold;border-radius:999px;cursor:pointer;transition:all .2s ease;}
-#dadBtn{background:#1e88e5;color:white;position:absolute;left:50%;top:20px;transform:translateX(-50%);}
-#dadBtn:hover{transform:translateX(-50%) scale(1.08);}
-#momBtn{background:#e91e63;color:white;position:fixed;left:60%;top:60%;z-index:10;}
-.result{display:none;margin-top:25px;font-size:24px;font-weight:bold;color:#1e88e5;}
+body{
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#f5efe6,#fff);
+}
+.card{
+  background:white;
+  padding:40px;
+  border-radius:24px;
+  box-shadow:0 15px 40px rgba(0,0,0,.15);
+  text-align:center;
+  width:650px;
+}
+h1{font-size:42px;margin-bottom:30px;}
+.parent-btn{border:none;background:none;cursor:pointer;}
+.avatar{
+  width:260px;
+  height:260px;
+  object-fit:cover;
+  border-radius:50%;
+  border:8px solid #2f6df6;
+}
+#dadBtn{display:block;margin:0 auto;}
+#momBtn{position:fixed;z-index:999;}
+.label{
+  display:inline-block;
+  margin-top:12px;
+  padding:12px 28px;
+  border-radius:999px;
+  color:white;
+  font-size:32px;
+  font-weight:bold;
+  background:#2f6df6;
+}
+.momlabel{background:#ef5a7a;}
+.result{
+  display:none;
+  margin-top:25px;
+  font-size:30px;
+  font-weight:bold;
+  color:#2f6df6;
+}
 </style>
 </head>
 <body>
 <div class="card">
-<h1>Who is your favorite parent?</h1>
-<div class="buttons">
-<button id="dadBtn">Dad</button>
-</div>
-<div id="result" class="result">Excellent choice 😎</div>
+  <h1>Who is your favorite parent?</h1>
+
+  <button id="dadBtn" class="parent-btn">
+    <img src="dad.jpg" class="avatar" alt="Dad">
+    <div class="label">Dad</div>
+  </button>
+
+  <div id="result" class="result">
+    Excellent choice 😎
+  </div>
 </div>
 
-<button id="momBtn">Mom</button>
+<button id="momBtn" class="parent-btn">
+  <img src="mom.jpg" class="avatar" style="width:180px;height:180px;border-color:#ef5a7a;" alt="Mom">
+  <div class="label momlabel">Mom</div>
+</button>
 
 <script>
-const momBtn=document.getElementById("momBtn");
-const dadBtn=document.getElementById("dadBtn");
-const result=document.getElementById("result");
+const momBtn=document.getElementById('momBtn');
+const dadBtn=document.getElementById('dadBtn');
+const result=document.getElementById('result');
 
-function moveMomButton(){
- const padding=20;
- const maxX=window.innerWidth-momBtn.offsetWidth-padding;
- const maxY=window.innerHeight-momBtn.offsetHeight-padding;
- momBtn.style.left=(Math.random()*maxX)+"px";
- momBtn.style.top=(Math.random()*maxY)+"px";
+function moveMom(){
+  const maxX=window.innerWidth-momBtn.offsetWidth-20;
+  const maxY=window.innerHeight-momBtn.offsetHeight-20;
+  momBtn.style.left=(Math.random()*maxX)+'px';
+  momBtn.style.top=(Math.random()*maxY)+'px';
 }
 
-momBtn.addEventListener("mouseenter",moveMomButton);
-momBtn.addEventListener("mouseover",moveMomButton);
-momBtn.addEventListener("pointerenter",moveMomButton);
-momBtn.addEventListener("click",moveMomButton);
+moveMom();
 
-dadBtn.addEventListener("click",()=>{
- result.style.display="block";
- momBtn.style.display="none";
+momBtn.addEventListener('mouseenter',moveMom);
+momBtn.addEventListener('mouseover',moveMom);
+momBtn.addEventListener('pointerenter',moveMom);
+momBtn.addEventListener('click',moveMom);
+
+dadBtn.addEventListener('click',()=>{
+  result.style.display='block';
+  momBtn.style.display='none';
 });
 </script>
 </body>

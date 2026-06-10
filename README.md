@@ -1,13 +1,18 @@
 # Favorite Parent
 
-A fun interactive webpage that asks:
+Files included:
+- index.html
+- dad.jpg
+- mom.jpg
 
-> Who is your favorite parent?
+## Deploy to GitHub Pages
 
-- Dad button stays in the center
-- Mom button runs away whenever the mouse gets close
-- Clicking Dad reveals a message
+1. Create a GitHub repository.
+2. Upload all files.
+3. Go to Settings -> Pages.
+4. Select Deploy from Branch.
+5. Choose main and /(root).
+6. Save.
 
-## GitHub Pages
-
-Upload `index.html` and `README.md` to a GitHub repository and enable GitHub Pages from Settings → Pages.
+Dad stays in the center.
+Mom runs away whenever the mouse gets close.
